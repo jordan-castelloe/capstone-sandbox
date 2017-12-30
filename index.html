@@ -15,15 +15,15 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="#browse">Browse Trips</a>
+                <a class="nav-link" id = "browse" href="#browse">Browse Trips</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#create">Create a Trip</a>
+                <a class="nav-link" id = "create" href="#create">Create a Trip</a>
             </li>
         </ul>
     </nav>
 
-    <section class="browse-section" id="browse">
+    <section class="browse-section hidden" id="browse-section">
         <h2>Browse Trips</h2>
         <div class = "browse-container container">
             <div class="row">
@@ -64,16 +64,17 @@
         </div> <!-- bootstrap container div -->
     </section> <!-- browse trip section -->
 
-    <section class = "create-section hidden" id = "create">
+    <section class = "create-section hidden" id = "create-section">
         <h2>Create A Trip</h2>
         <div class = "container">
             <div class="row">
 
                 <div class="col-md search-container">
                     <h5>Search for places and add them to your trip</h5>
-                    <div class = "search-bar"></div>
-                    <div class = "search-results-container">
-
+                    <textarea class = "search-bar"></textarea>
+                    <button class="btn btn-secondary" id="search-button">Search</button>
+                    <div id = "searchable-map"></div>
+                    <div class = "search-results-container" id = "search-results-container">
                         <div class = "card search-result">
                             <h5 class = "result-name card-title">Result Name</h5>
                             <p class = "result-address">Address</p>
@@ -87,17 +88,17 @@
                     <h2>Your Trip</h2>
                     <div class = "location">
                         <h5 class = "location-name">Location Name</h5>
-                        <button class = "button" id = "remove-from-trip">Remove</button>
+                        <button class = "btn btn-secondary" id = "remove-from-trip">Remove</button>
                     </div>
 
                     <div class = "location">
                         <h5 class = "location-name">Location Name</h5>
-                        <button class = "button" id = "remove-from-trip">Remove</button>
+                        <button class = "btn btn-secondary" id = "remove-from-trip">Remove</button>
                     </div>
 
                     <div class = "location">
                         <h5 class = "location-name">Location Name</h5>
-                        <button class = "button" id = "remove-from-trip">Remove</button>
+                        <button class = "btn btn-secondary" id = "remove-from-trip">Remove</button>
                     </div>
 
                     <nav class = "options">
@@ -134,6 +135,7 @@
     
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEfJwa3LEU3awFOtWvICOozyOXGK2lkwI&libraries=places"></script>
     <script src='dist/bundle.js'></script>
 </body>
 </html>
