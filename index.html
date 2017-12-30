@@ -50,50 +50,62 @@
 
     <section class = "create-section" id = "create">
         <h2>Create A Trip</h2>
-        <h5>Search for places and add them to your trip</h5>
-        <div class = "search-bar"></div>
-        <div class = "search-results-container">
-            <div class = "search-result">
-                <h5 class = "result-name">Result Name</h5>
-                <p class = "result-address">Address</p>
-                <a href = "#">Website</a>
-                <button class = "btn btn-secondary" id = "add-to-trip">Add to Trip</button>
+        <div class = "container">
+            <h5>Search for places and add them to your trip</h5>
+            <div class = "search-bar"></div>
+            <div class = "search-results-container">
+                <div class = "search-result">
+                    <h5 class = "result-name">Result Name</h5>
+                    <p class = "result-address">Address</p>
+                    <a href = "#">Website</a>
+                    <button class = "btn btn-secondary" id = "add-to-trip">Add to Trip</button>
+                </div>
+            </div>
+
+            <div class = "trip">
+
+                <div class = "location">
+                    <h5 class = "location-name">Location Name</h5>
+                    <button class = "button" id = "remove-from-trip"></button>
+                </div>
+
+                <div class = "location">
+                    <h5 class = "location-name">Location Name</h5>
+                    <button class = "button" id = "remove-from-trip"></button>
+                </div>
+
+                <div class = "location">
+                    <h5 class = "location-name">Location Name</h5>
+                    <button class = "button" id = "remove-from-trip"></button>
+                </div>
+
+                <nav class = "options">
+                    <p>This trip is a:</p>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="itenerary" value="itenerary">
+                        <label class="form-check-label" for="itenerary">Itenerary</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="collection" value="collection">
+                        <label class="form-check-label" for="collection">Collection</label>
+                    </div>
+                    
+                    <button id = "save-trip">Save Trip</button>
+                    <button id = "publish-trip">Publish</button>
+                </nav>
             </div>
         </div>
+    </section>
 
-        <div class = "trip">
-
-            <div class = "location">
-                <h5 class = "location-name">Location Name</h5>
-                <button class = "button" id = "remove-from-trip"></button>
-            </div>
-
-            <div class = "location">
-                <h5 class = "location-name">Location Name</h5>
-                <button class = "button" id = "remove-from-trip"></button>
-            </div>
-
-            <div class = "location">
-                <h5 class = "location-name">Location Name</h5>
-                <button class = "button" id = "remove-from-trip"></button>
-            </div>
-
-            <nav class = "options">
-                <p>This trip is a:</p>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="itenerary" value="itenerary">
-                    <label class="form-check-label" for="itenerary">Itenerary</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="collection" value="collection">
-                    <label class="form-check-label" for="collection">Collection</label>
-                </div>
-                
-                <button id = "save-trip">Save Trip</button>
-                <button id = "publish-trip">Publish</button>
-            </nav>
+    <section class = "view-trip">
+        <h3>Trip Name</h3>
+        <h4>Trip Author</h4>
+        <p class = "trip-description">Trip Description</p>
+        
+        <div class = "container">
+        <div id = "map-container">Map Container</div>
+        <div id = "details-container">List of places</div>
         </div>
- 
     </section>
     
     
