@@ -1,6 +1,8 @@
 'use strict';
 
 const placesSearch = require("./placesSearch.js");
+const tripBuilder = require("./tripBuilder.js");
+const tripPrinter = require("./tripBuilderView.js");
 
 module.exports.activateEvents = function(){
 
@@ -15,5 +17,15 @@ module.exports.activateEvents = function(){
         console.log("this is the search string you're passing in", searchString);
         placesSearch.searchPlaces(searchString);
      });
+
+     $("#search-results-container").click(function(){
+         if (event.target.id == "addToTrip") {
+           tripBuilder.addToTrip(event.target.parentNode.id);
+           tripPrinter.printTrip(event.target.parentNode);
+         }
+     });
+         
+
+    
 };
 

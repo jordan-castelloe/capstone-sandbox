@@ -1,5 +1,5 @@
 'use strict';
-const printer = require("./searchResultsView.js");
+const printer = require("./placesSearchView.js");
 
 let map = "";
 
