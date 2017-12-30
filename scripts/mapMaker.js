@@ -1,4 +1,5 @@
 'use strict';
+let map = "";
 
 //fid the user's location
 module.exports.geoLocate = function() {
@@ -25,22 +26,36 @@ function error(error) {
 
 function showMap(lat, long) {
     let mapContainer = document.getElementById("searchable-map");  // why doesn't this work with jquery selectors?
-    let map = new google.maps.Map(mapContainer, {
+    map = new google.maps.Map(mapContainer, {
       zoom: 6,
       center: { lat: lat, lng: long },
       zoomControl: true,
-      mapTypeControl: true,
-      scaleControl: true,
-      streetViewControl: true,
-      rotateControl: true,
-      fullscreenControl: true
     });
 }
 
 
-// let centerMarker = new google.maps.Marker({
-//     map: map,
-//     position: map.getCenter(),
-// });
+module.exports.searchPlaces = function(searchString) {
+    console.log("the search places function was fired");
+    console.log("this should be a latlng object that's the center of the map", map.getCenter());
+    let searchRequest = {
+        query: searchString,
+        location: map.getCenter(),
+        radius: 5000
+    };
+    let placesService = new google.maps.places.PlacesService(map);
+    placesService.textSearch(searchRequest, callback);
+};
+
+function callback(results, status) {
+  console.log("this is the results of the places search", results);
+
+}
+
+
+
+
+
+
+
 
 
