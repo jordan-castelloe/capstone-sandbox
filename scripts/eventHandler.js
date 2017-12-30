@@ -1,6 +1,6 @@
 'use strict';
 
-const mapMaker = require("./mapMaker.js");
+const placesSearch = require("./placesSearch.js");
 
 module.exports.activateEvents = function(){
 
@@ -13,7 +13,7 @@ module.exports.activateEvents = function(){
      $("#search-button").click(function(){
         let searchString = $(".search-bar").val();
         console.log("this is the search string you're passing in", searchString);
-        mapMaker.searchPlaces(searchString);
+        placesSearch.searchPlaces(searchString);
      });
 };
 

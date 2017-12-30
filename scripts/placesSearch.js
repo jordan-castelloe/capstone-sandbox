@@ -1,4 +1,6 @@
 'use strict';
+const printer = require("./searchResultsView.js");
+
 let map = "";
 
 //fid the user's location
@@ -35,8 +37,6 @@ function showMap(lat, long) {
 
 
 module.exports.searchPlaces = function(searchString) {
-    console.log("the search places function was fired");
-    console.log("this should be a latlng object that's the center of the map", map.getCenter());
     let searchRequest = {
         query: searchString,
         location: map.getCenter(),
@@ -46,9 +46,9 @@ module.exports.searchPlaces = function(searchString) {
     placesService.textSearch(searchRequest, callback);
 };
 
-function callback(results, status) {
-  console.log("this is the results of the places search", results);
-
+function callback(searchResults, status) {
+  console.log(searchResults);
+  printer.printSearchResults(searchResults);
 }
 
 

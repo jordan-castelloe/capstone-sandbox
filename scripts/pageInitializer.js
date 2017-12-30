@@ -1,6 +1,6 @@
 'use strict';
 
-const mapMaker = require("./mapMaker.js");
+const mapMaker = require("./placesSearch.js");
 
 module.exports.initializePage = function() {
   $(".hidden").hide();
