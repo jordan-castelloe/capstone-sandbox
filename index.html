@@ -12,92 +12,115 @@
 <body>
     <h1>Capstone Sandbox</h1>
 
-    <nav>
-        <ul>
-            <li><a href = "#browse">Browse Trips</a></li>
-            <li><a href = "#create">Create a Trip</a></li>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="#browse">Browse Trips</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#create">Create a Trip</a>
+            </li>
         </ul>
     </nav>
 
     <section class="browse-section" id="browse">
-
         <h2>Browse Trips</h2>
-
         <div class = "browse-container container">
-            <article class = "trip">
-                <h3 class = "trip-name">Trip Name</h3>
-                <h4 class = "trip-author">Trip Author</h4>
-                <p class = "trip-description">Trip Description</p>
-                <button class = "btn btn-secondary" id = "view-trip">View Trip</button>
-            </article>
+            <div class="row">
+                <div class="col-md">
+                    <article class="trip card">
+                        <img class="card-img-top" src="..." alt="Card image cap">
+                        <div class="card-body">
+                            <h3 class="trip-name card-title">Trip Name</h3>
+                            <h4 class="trip-author">Trip Author</h4>
+                            <p class="trip-description card-text">Trip Description</p>
+                            <button class="btn btn-secondary" id="view-trip">View Trip</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-md">
+                    <article class="trip card">
+                        <img class="card-img-top" src="..." alt="Card image cap">
+                        <div class="card-body">
+                            <h3 class="trip-name card-title">Trip Name</h3>
+                            <h4 class="trip-author">Trip Author</h4>
+                            <p class="trip-description card-text">Trip Description</p>
+                            <button class="btn btn-secondary" id="view-trip">View Trip</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-md">
+                    <article class="trip card">
+                        <img class="card-img-top" src="..." alt="Card image cap">
+                        <div class="card-body">
+                            <h3 class="trip-name card-title">Trip Name</h3>
+                            <h4 class="trip-author">Trip Author</h4>
+                            <p class="trip-description card-text">Trip Description</p>
+                            <button class="btn btn-secondary" id="view-trip">View Trip</button>
+                        </div>
+                    </article><!-- trip card -->
+                </div><!-- bootstrap col-md div -->
+            </div> <!-- bootstrap row div -->   
+        </div> <!-- bootstrap container div -->
+    </section> <!-- browse trip section -->
 
-            <article class = "trip">
-                <h3 class = "trip-name">Trip Name</h3>
-                <h4 class = "trip-author">Trip Author</h4>
-                <p class = "trip-description">Trip Description</p>
-                <button class = "btn btn-secondary" id = "view-trip">View Trip</button>
-            </article>
-
-            <article class = "trip">
-                <h3 class = "trip-name">Trip Name</h3>
-                <h4 class = "trip-author">Trip Author</h4>
-                <p class = "trip-description">Trip Description</p>
-                <button class = "btn btn-secondary" id = "view-trip">View Trip</button>
-            </article>
-        </div>
-    
-    </section>
-
-    <section class = "create-section" id = "create">
+    <section class = "create-section hidden" id = "create">
         <h2>Create A Trip</h2>
         <div class = "container">
-            <h5>Search for places and add them to your trip</h5>
-            <div class = "search-bar"></div>
-            <div class = "search-results-container">
-                <div class = "search-result">
-                    <h5 class = "result-name">Result Name</h5>
-                    <p class = "result-address">Address</p>
-                    <a href = "#">Website</a>
-                    <button class = "btn btn-secondary" id = "add-to-trip">Add to Trip</button>
-                </div>
-            </div>
+            <div class="row">
 
-            <div class = "trip">
+                <div class="col-md search-container">
+                    <h5>Search for places and add them to your trip</h5>
+                    <div class = "search-bar"></div>
+                    <div class = "search-results-container">
 
-                <div class = "location">
-                    <h5 class = "location-name">Location Name</h5>
-                    <button class = "button" id = "remove-from-trip"></button>
-                </div>
+                        <div class = "card search-result">
+                            <h5 class = "result-name card-title">Result Name</h5>
+                            <p class = "result-address">Address</p>
+                            <a href = "#">Website</a>
+                            <button class = "btn btn-secondary" id = "add-to-trip">Add to Trip</button>
+                        </div>
+                    </div><!-- search results div -->
+                </div> <!-- column div -->
 
-                <div class = "location">
-                    <h5 class = "location-name">Location Name</h5>
-                    <button class = "button" id = "remove-from-trip"></button>
-                </div>
-
-                <div class = "location">
-                    <h5 class = "location-name">Location Name</h5>
-                    <button class = "button" id = "remove-from-trip"></button>
-                </div>
-
-                <nav class = "options">
-                    <p>This trip is a:</p>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="itenerary" value="itenerary">
-                        <label class="form-check-label" for="itenerary">Itenerary</label>
+                <div class = "col-md trip-container">
+                    <h2>Your Trip</h2>
+                    <div class = "location">
+                        <h5 class = "location-name">Location Name</h5>
+                        <button class = "button" id = "remove-from-trip">Remove</button>
                     </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="collection" value="collection">
-                        <label class="form-check-label" for="collection">Collection</label>
-                    </div>
-                    
-                    <button id = "save-trip">Save Trip</button>
-                    <button id = "publish-trip">Publish</button>
-                </nav>
-            </div>
-        </div>
-    </section>
 
-    <section class = "view-trip">
+                    <div class = "location">
+                        <h5 class = "location-name">Location Name</h5>
+                        <button class = "button" id = "remove-from-trip">Remove</button>
+                    </div>
+
+                    <div class = "location">
+                        <h5 class = "location-name">Location Name</h5>
+                        <button class = "button" id = "remove-from-trip">Remove</button>
+                    </div>
+
+                    <nav class = "options">
+                        <p>This trip is a:</p>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="itenerary" value="itenerary">
+                            <label class="form-check-label" for="itenerary">Itenerary</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="collection" value="collection">
+                            <label class="form-check-label" for="collection">Collection</label>
+                        </div>
+                        
+                        <button id = "save-trip">Save Trip</button>
+                        <button id = "publish-trip">Publish</button>
+                    </nav>
+                </div> <!-- col-md search container div -->
+            </div><!-- bootstrap row div -->
+        </div><!-- bootstrap container div -->
+    </section><!-- create trip section -->
+
+
+    <section class = "view-trip hidden">
         <h3>Trip Name</h3>
         <h4>Trip Author</h4>
         <p class = "trip-description">Trip Description</p>
