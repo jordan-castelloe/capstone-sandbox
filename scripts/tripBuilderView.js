@@ -9,3 +9,7 @@ module.exports.printTrip = function(resultsDiv){
     $(".location-card > #addToTrip").replaceWith(removeButton); // why does this only work on the second click??
     locationCard.appendTo(tripContainer); 
 };
+
+module.exports.removeLocationCard = function(locationCard){
+    //remove from dom
+};

@@ -34,35 +34,24 @@
                             <h3 class="trip-name card-title">Trip Name</h3>
                             <h4 class="trip-author">Trip Author</h4>
                             <p class="trip-description card-text">Trip Description</p>
-                            <button class="btn btn-secondary" id="view-trip">View Trip</button>
-                        </div>
-                    </article>
-                </div>
-                <div class="col-md">
-                    <article class="trip card">
-                        <img class="card-img-top" src="..." alt="Card image cap">
-                        <div class="card-body">
-                            <h3 class="trip-name card-title">Trip Name</h3>
-                            <h4 class="trip-author">Trip Author</h4>
-                            <p class="trip-description card-text">Trip Description</p>
-                            <button class="btn btn-secondary" id="view-trip">View Trip</button>
-                        </div>
-                    </article>
-                </div>
-                <div class="col-md">
-                    <article class="trip card">
-                        <img class="card-img-top" src="..." alt="Card image cap">
-                        <div class="card-body">
-                            <h3 class="trip-name card-title">Trip Name</h3>
-                            <h4 class="trip-author">Trip Author</h4>
-                            <p class="trip-description card-text">Trip Description</p>
-                            <button class="btn btn-secondary" id="view-trip">View Trip</button>
+                            <button class = "btn btn-secondary" id="view-trip">View Trip</button>
                         </div>
                     </article><!-- trip card -->
                 </div><!-- bootstrap col-md div -->
             </div> <!-- bootstrap row div -->   
         </div> <!-- bootstrap container div -->
     </section> <!-- browse trip section -->
+
+    <section class="view-single-trip hidden" id="single-trip-section">
+        <h3>Trip Name</h3>
+        <h4>Trip Author</h4>
+        <p class="trip-description">Trip Description</p>
+    
+        <div class="container">
+            <div id="singe-trip-map-container">Map Container</div>
+            <div id="details-container">List of places</div>
+        </div>
+    </section> <!-- single-trip section -->
 
     <section class = "create-section hidden" id = "create-section">
         <h2>Create A Trip</h2>
@@ -100,16 +89,7 @@
     </section><!-- create trip section -->
 
 
-    <section class = "view-trip hidden">
-        <h3>Trip Name</h3>
-        <h4>Trip Author</h4>
-        <p class = "trip-description">Trip Description</p>
-        
-        <div class = "container">
-        <div id = "map-container">Map Container</div>
-        <div id = "details-container">List of places</div>
-        </div>
-    </section>
+   
     
     
     

@@ -3,6 +3,7 @@
 const placesSearch = require("./placesSearch.js");
 const tripBuilder = require("./tripBuilder.js");
 const tripPrinter = require("./tripBuilderView.js");
+const singleTrip = require("./singleTrip.js");
 
 module.exports.activateEvents = function(){
 
@@ -30,6 +31,11 @@ module.exports.activateEvents = function(){
     //  removes from Dom-- tripBuilderView.js
     //  removes from array-- tripBuilder.js
 
+    $("#view-trip").click(function(){
+        $(".hidden").hide();
+        $("#single-trip-section").show();
+        singleTrip.loadTrip();
+    });
     
 };
 
