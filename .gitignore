@@ -2,8 +2,8 @@ node_modules
 
 .DS_Store
 
-styles/main.css
+styles
 
 dist/bundle.js
 
-sass/sass-cache
+.sass-cache

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy"
+        crossorigin="anonymous">
+    <link rel='stylesheet' type='text/css' href='styles/main.css'>
+    <title>Capstone Sandbox</title>
+</head>
+<body>
+    <h1>Capstone Sandbox</h1>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" id = "browse" href="#browse">Browse Trips</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id = "create" href="#create">Create a Trip</a>
+            </li>
+        </ul>
+    </nav>
+
+    <section class="browse-section hidden" id="browse-section">
+        <h2>Browse Trips</h2>
+        <div class = "browse-container container">
+            <div class="row">
+                <div class="col-md">
+                    <article class="trip card">
+                        <img class="card-img-top" src="..." alt="Card image cap">
+                        <div class="card-body">
+                            <h3 class="trip-name card-title">Trip Name</h3>
+                            <h4 class="trip-author">Trip Author</h4>
+                            <p class="trip-description card-text">Trip Description</p>
+                            <button class = "btn btn-secondary" id="view-trip">View Trip</button>
+                        </div>
+                    </article><!-- trip card -->
+                </div><!-- bootstrap col-md div -->
+            </div> <!-- bootstrap row div -->   
+        </div> <!-- bootstrap container div -->
+    </section> <!-- browse trip section -->
+
+    <section class="view-single-trip hidden" id="single-trip-section">
+        <h3>Trip Name</h3>
+        <h4>Trip Author</h4>
+        <p class="trip-description">Trip Description</p>
+    
+        <div class="container">
+            <div id="single-trip-map-container">Map Container</div>
+            <div id="details-container">List of places</div>
+        </div>
+    </section> <!-- single-trip section -->
+
+    <section class = "create-section hidden" id = "create-section">
+        <h2>Create A Trip</h2>
+        <div class = "container">
+            <div class="row">
+
+                <div class="col-md search-container">
+                    <h5>Search for places and add them to your trip</h5>
+                    <textarea class = "search-bar"></textarea>
+                    <button class="btn btn-secondary" id="search-button">Search</button>
+                    <div id = "searchable-map"></div>
+                    <div class = "search-results-container" id = "search-results-container">
+                    </div><!-- search results div -->
+                </div> <!-- column div -->
+
+                <div class = "col-md trip-container">
+                    <h2>Your Trip</h2>
+                    <nav class = "options">
+                        <p>This trip is a:</p>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="itenerary" value="itenerary">
+                            <label class="form-check-label" for="itenerary">Itenerary</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="collection" value="collection">
+                            <label class="form-check-label" for="collection">Collection</label>
+                        </div>
+                        
+                        <button class="btn btn-secondary" id = "save-trip">Save</button>
+                        <button class="btn btn-secondary" id = "publish-trip">Publish</button>
+                    </nav>
+                </div> <!-- col-md search container div -->
+            </div><!-- bootstrap row div -->
+        </div><!-- bootstrap container div -->
+    </section><!-- create trip section -->
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEfJwa3LEU3awFOtWvICOozyOXGK2lkwI&libraries=places"></script>
+    <script src='dist/bundle.js'></script>
+</body>
+</html>
