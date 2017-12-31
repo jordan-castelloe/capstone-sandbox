@@ -16,6 +16,7 @@ module.exports.activateEvents = function(){
         let searchString = $(".search-bar").val();
         console.log("this is the search string you're passing in", searchString);
         placesSearch.searchPlaces(searchString);
+        // need to clear search results every time this is clicked
      });
 
      $("#search-results-container").click(function(){
@@ -24,7 +25,10 @@ module.exports.activateEvents = function(){
            tripPrinter.printTrip(event.target.parentNode);
          }
      });
-         
+
+    //  event handler for remove from trip button 
+    //  removes from Dom-- tripBuilderView.js
+    //  removes from array-- tripBuilder.js
 
     
 };
