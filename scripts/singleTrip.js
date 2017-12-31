@@ -9,7 +9,7 @@ const geocoder = new google.maps.Geocoder();
 module.exports.loadTrip = function(tripName){
     let tripIDs = getTripData(); // pass in argument of trip name- for now it's just places Array
     getMapCenter(tripIDs[0]);
-    // getLatLngs(tripIDs); 
+    populateMap(tripIDs); 
 };
 
 // this would accept an argument of trip name
@@ -28,6 +28,10 @@ function mapCenterCallback(results, status){
     showMap(center);
 }
 
+function populateMap(placeIDArray){
+    getLatLngs(placeIDArray);
+}
+
 // convert all place ids to lat lng objects
 function getLatLngs(placeIdArray){
     for (let i = 0; i < placeIdArray.length; i++){
@@ -38,15 +42,12 @@ function getLatLngs(placeIdArray){
 
 
 function geocoderCallback(results, status){
-    let resultsArray = [];
-    resultsArray.push(results);
-    return resultsArray;
+    createMarkers(results);
     // console.log("this is a single result", results); // this is a single result (it looks like an array??)
     // console.log("this is the type of result", typeof results); // but it says it's an object??
     // console.log("this should be an array of the results", resultsArray); //wtf is going on
     // console.log("this should be a single result pulled from the array and it SHOULD LOOK LIKE AN OBJECT", resultsArray[0][0]); //this works
     // console.log("this should be a single result latlng object", resultsArray[0][0].geometry.location); // this works 
-    
 }
 
 
@@ -60,15 +61,15 @@ function showMap(latlngObject) {
     });
 }
 
-
-
-  function createMarkers(tripData) {
-    //  var marker = new google.maps.Marker({
-    //    position: myLatLng,
-    //    map: map,
-    //    title: "Hello World!"
-    //  });
+  function createMarkers(locationObject) {
+    console.log("create marker function fired!");
+     let marker = new google.maps.Marker({
+       position: locationObject[0].geometry.location,
+       map: map,
+       title: "title"
+     });
   }
+
 
 //   document.getElementById("submit").addEventListener("click", function() {
 //     geocodePlaceId(geocoder, map, infowindow);
