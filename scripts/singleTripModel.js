@@ -8,17 +8,18 @@ const geocoder = new google.maps.Geocoder();
 
 // pass in the trip name
 module.exports.loadTrip = function(tripName){
-    let tripIDs = getTripData("placesArray"); //eventually want to pass in argument of trip name- for now there's just one
+    let tripIDs = JSON.parse(localStorage.getItem(tripName));
+    console.log("this should be the tripIDs fro the loadTrip module", tripIDs); //eventually want to pass in argument of trip name- for now there's just one
     getMapCenter(tripIDs[0]);
     populateMap(tripIDs); 
 };
 
 // accepts trip name and retrieves array of place IDs from local storage
-function getTripData(tripName){
-    let tripData = JSON.parse(localStorage.getItem(tripName)); 
-    console.log("this should be an array of trip Id's", tripData);
-    return tripData;
-}
+// function getTripData(tripName){
+     
+//     console.log("this should be an array of trip Id's", tripData);
+//     return tripData;
+// }
 
 // centers the map on the first trip ID
 function getMapCenter(firstId){

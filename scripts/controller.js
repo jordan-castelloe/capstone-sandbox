@@ -4,7 +4,7 @@ const placesSearch = require("./placesSearchModel.js");
 const tripBuilder = require("./tripBuilderModel.js");
 const tripPrinter = require("./tripBuilderView.js");
 const singleTrip = require("./singleTripModel.js");
-
+let places = [];
 module.exports.activateEvents = function(){
 
     //shows secton when you click on the navbar
@@ -25,9 +25,21 @@ module.exports.activateEvents = function(){
      // adds each place to trip when you click on it from the search results
      $("#search-results-container").click(function(){
          if (event.target.id == "addToTrip") {
-           tripBuilder.addToTrip(event.target.parentNode.id); //stores array of place ids in local storage
+           places.push(event.target.parentNode.id);
+           console.log("this is the places array every time you click add to trip", places);
            tripPrinter.printTrip(event.target.parentNode); // moves the place over to 'your trip' div on the right
          }
+     });
+
+     // right now save and publish do the same thing, but eventually save would save it locally and publish would stick it on the map
+     $("#save-trip-button").click(function(){
+         console.log("this is the places array when you click the save button", places);
+         tripBuilder.saveTrip(places);
+     });
+
+     $("#publish-trip-button").click(function(){
+         tripBuilder.saveTrip(places);
+
      });
 
      // save button on click -- > add whole array to trip
@@ -40,7 +52,7 @@ module.exports.activateEvents = function(){
     $("#view-trip").click(function(){
         $(".hidden").hide();
         $("#single-trip-section").show();
-        singleTrip.loadTrip();
+        singleTrip.loadTrip("placesArray"); // this accepts an arguement of trip name
     });
     
 };
