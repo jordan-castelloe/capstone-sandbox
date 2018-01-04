@@ -1,5 +1,6 @@
 'use strict';
 
+// print search results in the DOM (gets called in callback for places search in placesSearchModel)
 module.exports.printSearchResults = function(resultsArray){
     let resultsContainer = $("#search-results-container");
     for (let i = 0; i < resultsArray.length; i++){

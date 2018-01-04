@@ -2,6 +2,7 @@
 const localStorageHandler = require("./localStorage.js");
 let places = [];
 
+// pushes places into an array and adds array to storage
 module.exports.addToTrip = function(placeID){
     places.push(placeID);
     localStorage.setItem("placesArray", JSON.stringify(places));

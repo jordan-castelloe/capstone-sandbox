@@ -6,33 +6,37 @@ let map = "";
 const infowindow = new google.maps.InfoWindow();
 const geocoder = new google.maps.Geocoder();
 
+// pass in the trip name
 module.exports.loadTrip = function(tripName){
-    let tripIDs = getTripData(); // pass in argument of trip name- for now it's just places Array
+    let tripIDs = getTripData("placesArray"); //eventually want to pass in argument of trip name- for now there's just one
     getMapCenter(tripIDs[0]);
     populateMap(tripIDs); 
 };
 
-// this would accept an argument of trip name
-function getTripData(){
-    let tripData = JSON.parse(localStorage.getItem("placesArray"));
+// accepts trip name and retrieves array of place IDs from local storage
+function getTripData(tripName){
+    let tripData = JSON.parse(localStorage.getItem(tripName)); 
     console.log("this should be an array of trip Id's", tripData);
     return tripData;
 }
 
+// centers the map on the first trip ID
 function getMapCenter(firstId){
     geocoder.geocode({ placeId: firstId }, mapCenterCallback);
 }
 
+// callback for getMapCenter (shows the map)
 function mapCenterCallback(results, status){
     let center = results[0].geometry.location;
     showMap(center);
 }
 
+// places markers on map
 function populateMap(placeIDArray){
     getLatLngs(placeIDArray);
 }
 
-// convert all place ids to lat lng objects
+// converts all place ids to lat lng objects
 function getLatLngs(placeIdArray){
     for (let i = 0; i < placeIdArray.length; i++){
         geocoder.geocode({ placeId: placeIdArray[i] }, geocoderCallback);
@@ -40,7 +44,7 @@ function getLatLngs(placeIdArray){
 }
 
 
-
+// this is the callback for each iteration of the getLatLngs loop
 function geocoderCallback(results, status){
     createMarkers(results);
     // console.log("this is a single result", results); // this is a single result (it looks like an array??)
@@ -50,9 +54,8 @@ function geocoderCallback(results, status){
     // console.log("this should be a single result latlng object", resultsArray[0][0].geometry.location); // this works 
 }
 
-
+// this shows the map-- effectively based on the first place id
 function showMap(latlngObject) {
-    console.log("show map function fired!");
     let mapContainer = document.getElementById("single-trip-map-container"); 
     map = new google.maps.Map(mapContainer, {
         zoom: 8,
@@ -61,6 +64,7 @@ function showMap(latlngObject) {
     });
 }
 
+// creates a map marker for a location obj
 function createMarkers(locationObject) {
     console.log("create marker function fired!");
     let marker = new google.maps.Marker({
