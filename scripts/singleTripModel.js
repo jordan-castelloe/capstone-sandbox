@@ -14,12 +14,6 @@ module.exports.loadTrip = function(tripName){
     populateMap(tripIDs); 
 };
 
-// accepts trip name and retrieves array of place IDs from local storage
-// function getTripData(tripName){
-     
-//     console.log("this should be an array of trip Id's", tripData);
-//     return tripData;
-// }
 
 // centers the map on the first trip ID
 function getMapCenter(firstId){
