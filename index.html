@@ -69,7 +69,15 @@
 
                 <div class = "col-md trip-container">
                     <h2>Your Trip</h2>
-                    <nav class = "options">
+                    <form class = "options">
+                        <div class="form-group">
+                            <label for="trip-name">Name</label>
+                            <input type="text" class="form-control" id="trip-name" placeholder="Best Hikes in Nashville">
+                        </div>
+                        <div class="form-group">
+                            <label for="trip-description">Description</label>
+                            <input type="text" class="form-control" id="trip-description" placeholder="Awesome hikes less than 2 hours away">
+                        </div>
                         <p>This trip is a:</p>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="checkbox" id="itenerary" value="itenerary">
@@ -79,10 +87,12 @@
                             <input class="form-check-input" type="checkbox" id="collection" value="collection">
                             <label class="form-check-label" for="collection">Collection</label>
                         </div>
+                    </form>
+
+                        <div class = "my-trip"></div>
                         
                         <button class="btn btn-secondary" id = "save-trip">Save</button>
                         <button class="btn btn-secondary" id = "publish-trip">Publish</button>
-                    </nav>
                 </div> <!-- col-md search container div -->
             </div><!-- bootstrap row div -->
         </div><!-- bootstrap container div -->

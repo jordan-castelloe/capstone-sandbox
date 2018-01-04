@@ -1,8 +1,8 @@
 'use strict';
 
+// prints into 'your trip' section under 'create trip' when you add something to your trip from the search results
 module.exports.printTrip = function(resultsDiv){
-    console.log("this should be the card div", resultsDiv);
-    let tripContainer = $(".trip-container");
+    let tripContainer = $(".my-trip");
     let locationCard = $(resultsDiv).clone();
     locationCard.addClass("location-card");
     let removeButton = $("<button>", {class: "btn btn-secondary", id: "removeFromTrip"}).text("Remove From Trip");

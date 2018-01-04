@@ -21,13 +21,14 @@ function success(result) {
     showMap(lat, long);
 }
 
+// if not, print an error code
 function error(error) {
   console.log(`error(${error.code}): ${error.message}`);
 }
 
-
+// show the searchable map
 function showMap(lat, long) {
-    let mapContainer = document.getElementById("searchable-map");  // why doesn't this work with jquery selectors?
+    let mapContainer = document.getElementById("searchable-map");  
     map = new google.maps.Map(mapContainer, {
       zoom: 6,
       center: { lat: lat, lng: long },
@@ -35,7 +36,7 @@ function showMap(lat, long) {
     });
 }
 
-
+// pass in a search string and search the radius of the map
 module.exports.searchPlaces = function(searchString) {
     let searchRequest = {
         query: searchString,
@@ -46,8 +47,9 @@ module.exports.searchPlaces = function(searchString) {
     placesService.textSearch(searchRequest, callback);
 };
 
+//once the search request completes, print the search results
 function callback(searchResults, status) {
-  console.log(searchResults);
+//   console.log(searchResults);
   printer.printSearchResults(searchResults);
 }
 
