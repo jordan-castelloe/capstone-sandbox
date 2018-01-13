@@ -2,10 +2,11 @@
 
 const placesSearch = require("./placesSearch");
 const domPrinter = require("./domPrinter");
-const singleTripLoader = require("./loadTrip");
+const singleTripMap = require("./singleTripMap");
 const firebase = require("./firebase");
 const tripFormatter = require("./tripFormatter");
-let places = [];
+
+let locations = [];
 
 //shows secton when you click on the navbar
 function activateNavBar(){
@@ -29,7 +30,8 @@ function activateSearchButton(){
 function activateAddToTripButtons (){
     $("#search-results-container").click(function () {
         if (event.target.id == "addToTrip") {
-            places.push(event.target.parentNode.id);
+            locations.push(event.target.parentNode.id);
+            console.log("this is the locations array when you click add to trip,", locations);
             domPrinter.printTripBuilder(event.target.parentNode); // moves the place (parentNodeof the button) over to 'your trip' div on the right
         }
     });
@@ -37,14 +39,15 @@ function activateAddToTripButtons (){
 
 // right now save and publish do the same thing, but eventually save would save it locally and publish would stick it on the map
 function activateSaveTripButton(){
-    $("#save-trip-button").click(function () {
-       createNewTrip();
+    $("#save-trip-button").click(function (){
+       console.log("this is the locations array that you're passing into save trip", locations);
+        createNewTrip(locations);
     });
 }
 
 function activatePublishButton(){
     $("#publish-trip-button").click(function () {
-        createNewTrip();
+        createNewTrip(locations);
     });
 }
 
@@ -57,12 +60,11 @@ function activateViewTripButton(){
         let trip = firebase.getSingleTrip(tripId)
         .then(trip => {
             domPrinter.viewSingleTrip(trip);
+            singleTripMap.loadMap(trip);
         })
         .catch( err => {
             console.log("uh oh", err);
-        });
-        // singleTripLoader.loadTrip(tripId);
-        
+        }); 
     });
 }
 
@@ -94,11 +96,12 @@ function makeSearchMap () {
          });    
  }
 
- function createNewTrip(){
-     let trip = tripFormatter.formatTrip();
+ function createNewTrip(locationsArray){
+     let trip = tripFormatter.formatTrip(locationsArray);
      firebase.createNewTrip(trip)
          .then(trip => {
              loadAllTrips();
+             locations = []; // clear locations array when you make a new trip
          })
          .catch(err => {
              console.log("oops", err);
