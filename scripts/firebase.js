@@ -12,7 +12,6 @@ module.exports.createNewTrip = function (placesArray) {
         })
             .done(tripObject => {
                 resolve(tripObject);
-                console.log("something happened in the .done! the data went somewhere!");
             })
             .fail(error => {
                 console.log("uh-oh", error.statusText);
@@ -30,6 +29,21 @@ module.exports.getAllTrips = function () {
         })
             .done(trips => {
                 resolve(trips);
+            })
+            .fail(error => {
+                console.log("uh-oh", error.statusText);
+                reject(error);
+            });
+    });
+};
+
+module.exports.getSingleTrip = function (tripID) {
+    return new Promise((resolve, reject) => {
+        $.ajax({
+            url: `${dbURL}/trips/${tripID}.json`
+        })
+            .done(singleTrip => {
+                resolve(singleTrip);
             })
             .fail(error => {
                 console.log("uh-oh", error.statusText);

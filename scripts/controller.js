@@ -49,7 +49,7 @@ module.exports.activateEvents = function(){
     $("#view-trip").click(function(){
         $(".hidden").hide();
         $("#single-trip-section").show();
-        singleTrip.loadTrip("placesArray"); // this accepts an arguement of trip name
+        singleTrip.loadTrip("-L2jQtIMgyhGUVRoAjc7"); // this accepts an arguement of trip name
     });
     
 };
