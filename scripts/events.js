@@ -31,7 +31,6 @@ function activateAddToTripButtons (){
     $("#search-results-container").click(function () {
         if (event.target.id == "addToTrip") {
             locations.push(event.target.parentNode.id);
-            console.log("this is the locations array when you click add to trip,", locations);
             domPrinter.printTripBuilder(event.target.parentNode); // moves the place (parentNodeof the button) over to 'your trip' div on the right
         }
     });
@@ -40,7 +39,6 @@ function activateAddToTripButtons (){
 // right now save and publish do the same thing, but eventually save would save it locally and publish would stick it on the map
 function activateSaveTripButton(){
     $("#save-trip-button").click(function (){
-       console.log("this is the locations array that you're passing into save trip", locations);
         createNewTrip(locations);
     });
 }
@@ -54,7 +52,6 @@ function activatePublishButton(){
 // when you click on the view trip button on each trip card under 'view all trips', it hides the view all trips scene and shows the individual trip
 function activateViewTripButton(){
     $(document).on("click", ".view-trip", function (){
-        console.log("you want to view a trip!");
         $(".hidden").hide();
         let tripId = $(this).attr("id");
         let trip = firebase.getSingleTrip(tripId)
