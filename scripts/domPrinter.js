@@ -12,5 +12,13 @@ module.exports.printSearchResults = function (resultsArray) {
         let addButton = $("<button>", { class: "btn btn-secondary", id: "addToTrip" }).text("Add To Trip").appendTo(card);
         card.appendTo(resultsContainer);
     }
+};
 
+module.exports.printTrip = function (resultsDiv) {
+    let tripContainer = $(".my-trip");
+    let locationCard = $(resultsDiv).clone();
+    locationCard.addClass("location-card");
+    let removeButton = $("<button>", { class: "btn btn-secondary", id: "removeFromTrip" }).text("Remove From Trip");
+    $(".location-card > #addToTrip").replaceWith(removeButton); // why does this only work on the second click??
+    locationCard.appendTo(tripContainer);
 };

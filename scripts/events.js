@@ -3,7 +3,6 @@
 const placesSearch = require("./placesSearch.js");
 const domPrinter = require("./domPrinter.js");
 const tripBuilder = require("./tripBuilderModel.js");
-const tripPrinter = require("./tripBuilderView.js");
 const singleTrip = require("./singleTripModel.js");
 let places = [];
 
