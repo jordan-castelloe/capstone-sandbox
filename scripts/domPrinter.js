@@ -27,12 +27,12 @@ module.exports.printAllTrips = function(allTrips){
     let container = $("#view-all-trips-container");
     container.html('');
     for (let trip in allTrips) {
-        let tripCard = $("<article>", { class: "trip card", id: allTrips[trip].name }); // eventually I want the id to be a trip id
+        let tripCard = $("<article>", { class: "trip card", id: allTrips[trip].id }); 
         let cardBody = $("<div>", { class: "card-body" });
         let tripName = $("<h3>", { class: "trip-name card-title" }).text(allTrips[trip].name);
         let tripAuthor = $("<h5>", { class: "trip-autor" }).text(allTrips[trip].currentUser);
         let tripDescription = $("<p>", { class: "trip-description card-text" }).text(allTrips[trip].description);
-        let viewTripButton = $("<button>", { class: "btn btn-secondary view-trip", id: allTrips[trip].name }).text("View Trip");
+        let viewTripButton = $("<button>", { class: "btn btn-secondary view-trip", id: allTrips[trip].id }).text("View Trip");
         cardBody.append(tripName).append(tripAuthor).append(tripDescription).append(viewTripButton);
         tripCard.append(cardBody);
         container.append(tripCard);

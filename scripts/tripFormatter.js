@@ -16,5 +16,5 @@ module.exports.addTripID = function(allTrips){
    keys.forEach(key =>{
        allTrips[key].id = key;
    });
-   console.log(allTrips, "should have ids attached");
+   return allTrips;
 };
