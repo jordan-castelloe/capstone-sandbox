@@ -1,7 +1,13 @@
 module.exports = function(grunt) {
   grunt.initConfig({
     browserify: {
-      "dist/bundle.js": ["scripts/main.js"]
+      files: {
+        src: "scripts/main.js",
+        dest: "dist/bundle.js",
+      },
+      options: {
+        transform: ["hbsfy"],
+      }
     },
     jshint: {
       files: ["scripts/**/*.js"],
@@ -28,6 +34,10 @@ module.exports = function(grunt) {
       sass: {
         files: ["sass/**/*.scss"],
         tasks: ["sass"]
+      },
+      hbs: {
+        files: ["templates/**/*.hbs"],
+        tasks: ["browserify"]
       }
     }
   });

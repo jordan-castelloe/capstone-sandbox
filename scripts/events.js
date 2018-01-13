@@ -2,9 +2,11 @@
 
 const placesSearch = require("./placesSearch");
 const domPrinter = require("./domPrinter");
-const singleTripLoader = require("./loadTrip");
+const singleTripMap = require("./singleTripMap");
 const firebase = require("./firebase");
-let places = [];
+const tripFormatter = require("./tripFormatter");
+
+let locations = [];
 
 //shows secton when you click on the navbar
 function activateNavBar(){
@@ -28,32 +30,38 @@ function activateSearchButton(){
 function activateAddToTripButtons (){
     $("#search-results-container").click(function () {
         if (event.target.id == "addToTrip") {
-            places.push(event.target.parentNode.id);
-            domPrinter.printTrip(event.target.parentNode); // moves the place (parentNodeof the button) over to 'your trip' div on the right
+            locations.push(event.target.parentNode.id);
+            domPrinter.printTripBuilder(event.target.parentNode); // moves the place (parentNodeof the button) over to 'your trip' div on the right
         }
     });
 }
 
 // right now save and publish do the same thing, but eventually save would save it locally and publish would stick it on the map
 function activateSaveTripButton(){
-    $("#save-trip-button").click(function () {
-        firebase.createNewTrip(places);
+    $("#save-trip-button").click(function (){
+        createNewTrip(locations);
     });
 }
 
 function activatePublishButton(){
     $("#publish-trip-button").click(function () {
-        firebase.createNewTrip(places);
+        createNewTrip(locations);
     });
 }
 
 // when you click on the view trip button on each trip card under 'view all trips', it hides the view all trips scene and shows the individual trip
 function activateViewTripButton(){
-    $("#view-trip").click(function () {
+    $(document).on("click", ".view-trip", function (){
         $(".hidden").hide();
-        $("#single-trip-section").show();
-        // git trip id from event.target and pass it into load trip
-        singleTripLoader.loadTrip("-L2jQtIMgyhGUVRoAjc7"); // this accepts an arguement of trip ID
+        let tripId = $(this).attr("id");
+        let trip = firebase.getSingleTrip(tripId)
+        .then(trip => {
+            domPrinter.viewSingleTrip(trip);
+            singleTripMap.loadMap(trip);
+        })
+        .catch( err => {
+            console.log("uh oh", err);
+        }); 
     });
 }
 
@@ -74,6 +82,29 @@ function makeSearchMap () {
      $(".browse-section").show(); 
  }
 
+ function loadAllTrips(){
+     firebase.getAllTrips()
+        .then(allTrips => {
+            let formattedTrips = tripFormatter.addTripID(allTrips);
+            domPrinter.printAllTrips(formattedTrips);
+         })
+         .catch(err => {
+             console.log("oops", err);
+         });    
+ }
+
+ function createNewTrip(locationsArray){
+     let trip = tripFormatter.formatTrip(locationsArray);
+     firebase.createNewTrip(trip)
+         .then(trip => {
+             loadAllTrips();
+             locations = []; // clear locations array when you make a new trip
+         })
+         .catch(err => {
+             console.log("oops", err);
+         });  
+ }
+
 
 module.exports.activateEvents = function () {
     activateNavBar();
@@ -88,4 +119,5 @@ module.exports.activateEvents = function () {
 module.exports.initializePage = function(){
     showHomePage();
     makeSearchMap();
+    loadAllTrips();
 };

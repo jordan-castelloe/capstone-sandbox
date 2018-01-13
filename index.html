@@ -27,31 +27,21 @@
         <h2>Browse Trips</h2>
         <div class = "browse-container container">
             <div class="row">
-                <div class="col-md">
-                    <article class="trip card">
-                        <img class="card-img-top" src="..." alt="Card image cap">
+                <div class="col-md" id = "view-all-trips-container">
+                    <!-- <article class="trip card">
                         <div class="card-body">
                             <h3 class="trip-name card-title">Trip Name</h3>
                             <h4 class="trip-author">Trip Author</h4>
                             <p class="trip-description card-text">Trip Description</p>
-                            <button class = "btn btn-secondary" id="view-trip">View Trip</button>
-                        </div>
-                    </article><!-- trip card -->
+                            <button class="btn btn-secondary" id="view-trip">View Trip</button> 
+                        </div> 
+                    </article> -->
                 </div><!-- bootstrap col-md div -->
             </div> <!-- bootstrap row div -->   
         </div> <!-- bootstrap container div -->
     </section> <!-- browse trip section -->
 
-    <section class="view-single-trip hidden" id="single-trip-section">
-        <h3>Trip Name</h3>
-        <h4>Trip Author</h4>
-        <p class="trip-description">Trip Description</p>
-    
-        <div class="container">
-            <div id="single-trip-map-container">Map Container</div>
-            <div id="details-container">List of places</div>
-        </div>
-    </section> <!-- single-trip section -->
+    <div id = "view-single-trip"></div>
 
     <section class = "create-section hidden" id = "create-section">
         <h2>Create A Trip</h2>
@@ -79,14 +69,10 @@
                             <input type="text" class="form-control" id="trip-description" placeholder="Awesome hikes less than 2 hours away">
                         </div>
                         <p>This trip is a:</p>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="itenerary" value="itenerary">
-                            <label class="form-check-label" for="itenerary">Itenerary</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="collection" value="collection">
-                            <label class="form-check-label" for="collection">Collection</label>
-                        </div>
+                        <select class = "form-group" id = "trip-type">
+                            <option value = "itenerary">Itenerary</option>
+                            <option value = "collection">Collection</option>
+                        </select>
                     </form>
 
                         <div class = "my-trip"></div>

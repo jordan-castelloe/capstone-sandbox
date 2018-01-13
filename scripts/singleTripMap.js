@@ -5,17 +5,10 @@ const infowindow = new google.maps.InfoWindow();
 const geocoder = new google.maps.Geocoder();
 
 
-// pass in the trip id
-module.exports.loadTrip = function(tripID){
-    firebase.getSingleTrip(tripID)
-        .then((singleTrip) => {
-            getMapCenter(singleTrip[0]);
-            populateMap(singleTrip); 
-            
-        })
-        .catch(err => {
-            console.log("oops", err);
-        });    
+// pass in the trip object
+module.exports.loadMap = function(trip){
+    getMapCenter(trip.locations[0]);
+    populateMap(trip.locations);  
 };
 
 
