@@ -9,7 +9,6 @@ const geocoder = new google.maps.Geocoder();
 module.exports.loadTrip = function(tripID){
     firebase.getSingleTrip(tripID)
         .then((singleTrip) => {
-            console.log("this is what returns from firebase when you try to view a single trip", singleTrip);
             getMapCenter(singleTrip[0]);
             populateMap(singleTrip); 
             
@@ -66,7 +65,6 @@ function showMap(latlngObject) {
 
 // creates a map marker for a location obj
 function createMarkers(locationObject) {
-    console.log("create marker function fired!");
     let marker = new google.maps.Marker({
         position: locationObject[0].geometry.location,
         map: map,

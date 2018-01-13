@@ -1,8 +1,7 @@
 'use strict';
 
-const controller = require("./controller.js");
-const pageInitializer = require("./pageInitializer.js");
+const events = require("./events.js");
 
-pageInitializer.initializePage();
-pageInitializer.makeSearchMap();
-controller.activateEvents();
+events.initializePage();
+events.activateEvents();
+
