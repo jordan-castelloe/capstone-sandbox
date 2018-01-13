@@ -1,6 +1,7 @@
 'use strict';
 
-const placesSearch = require("./placesSearchModel.js");
+const placesSearch = require("./placesSearch.js");
+const domPrinter = require("./domPrinter.js");
 const tripBuilder = require("./tripBuilderModel.js");
 const tripPrinter = require("./tripBuilderView.js");
 const singleTrip = require("./singleTripModel.js");
@@ -20,7 +21,6 @@ function activateSearchButton(){
     $("#search-button").click(function () {
         let searchString = $(".search-bar").val();
         placesSearch.searchPlaces(searchString);
-        // this should return an array of places and THEN you send them ot the printer
         // need to clear search results every time this is clicked
     });
 }
@@ -30,7 +30,7 @@ function activateAddToTripButtons (){
     $("#search-results-container").click(function () {
         if (event.target.id == "addToTrip") {
             places.push(event.target.parentNode.id);
-            tripPrinter.printTrip(event.target.parentNode); // moves the place (parentNodeof the button) over to 'your trip' div on the right
+            domPrinter.printTrip(event.target.parentNode); // moves the place (parentNodeof the button) over to 'your trip' div on the right
         }
     });
 }

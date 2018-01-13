@@ -1,6 +1,5 @@
 'use strict';
-const printer = require("./placesSearchView.js");
-
+const domPrinter = require("./domPrinter");
 let map = "";
 
 //fid the user's location
@@ -17,7 +16,6 @@ function success(result) {
     let location = result.coords;
     let lat = location.latitude;
     let long = location.longitude;
-    console.log("lat", lat, "long", long);
     showMap(lat, long);
 }
 
@@ -48,9 +46,9 @@ module.exports.searchPlaces = function(searchString) {
 };
 
 //once the search request completes, print the search results
+// this has to be here right now (rather than in events) because I'm not sure how to convert google maps calls to promises
 function callback(searchResults, status) {
-//   console.log(searchResults);
-  printer.printSearchResults(searchResults);
+    domPrinter.printSearchResults(searchResults);
 }
 
 
