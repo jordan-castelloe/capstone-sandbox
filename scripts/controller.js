@@ -17,8 +17,8 @@ module.exports.activateEvents = function(){
      // search for places in 'create trip' section
      $("#search-button").click(function(){
         let searchString = $(".search-bar").val();
-        console.log("this is the search string you're passing in", searchString);
         placesSearch.searchPlaces(searchString);
+        // this should return an array of places and THEN you send them ot the printer
         // need to clear search results every time this is clicked
      });
 
@@ -26,14 +26,12 @@ module.exports.activateEvents = function(){
      $("#search-results-container").click(function(){
          if (event.target.id == "addToTrip") {
            places.push(event.target.parentNode.id);
-           console.log("this is the places array every time you click add to trip", places);
-           tripPrinter.printTrip(event.target.parentNode); // moves the place over to 'your trip' div on the right
+           tripPrinter.printTrip(event.target.parentNode); // moves the place (parentNodeof the button) over to 'your trip' div on the right
          }
      });
 
      // right now save and publish do the same thing, but eventually save would save it locally and publish would stick it on the map
      $("#save-trip-button").click(function(){
-         console.log("this is the places array when you click the save button", places);
          tripBuilder.saveTrip(places);
      });
 
@@ -42,7 +40,6 @@ module.exports.activateEvents = function(){
 
      });
 
-     // save button on click -- > add whole array to trip
 
     //  event handler for remove from trip button 
         //  removes from Dom-- tripBuilderView.js
@@ -52,7 +49,7 @@ module.exports.activateEvents = function(){
     $("#view-trip").click(function(){
         $(".hidden").hide();
         $("#single-trip-section").show();
-        singleTrip.loadTrip("placesArray"); // this accepts an arguement of trip name
+        singleTrip.loadTrip("-L2jQtIMgyhGUVRoAjc7"); // this accepts an arguement of trip name
     });
     
 };

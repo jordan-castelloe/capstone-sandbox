@@ -1,17 +1,22 @@
 'use strict';
-
-const localStorageHandler = require("./localStorage.js");
 let map = "";
-
+const firebase = require('./firebase');
 const infowindow = new google.maps.InfoWindow();
 const geocoder = new google.maps.Geocoder();
 
-// pass in the trip name
-module.exports.loadTrip = function(tripName){
-    let tripIDs = JSON.parse(localStorage.getItem(tripName));
-    console.log("this should be the tripIDs fro the loadTrip module", tripIDs); //eventually want to pass in argument of trip name- for now there's just one
-    getMapCenter(tripIDs[0]);
-    populateMap(tripIDs); 
+
+// pass in the trip id
+module.exports.loadTrip = function(tripID){
+    firebase.getSingleTrip(tripID)
+        .then((singleTrip) => {
+            console.log("this is what returns from firebase when you try to view a single trip", singleTrip);
+            getMapCenter(singleTrip[0]);
+            populateMap(singleTrip); 
+            
+        })
+        .catch(err => {
+            console.log("oops", err);
+        });    
 };
 
 
