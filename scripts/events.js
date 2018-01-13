@@ -1,9 +1,9 @@
 'use strict';
 
-const placesSearch = require("./placesSearch.js");
-const domPrinter = require("./domPrinter.js");
-const tripBuilder = require("./tripBuilderModel.js");
-const singleTrip = require("./singleTripModel.js");
+const placesSearch = require("./placesSearch");
+const domPrinter = require("./domPrinter");
+const singleTripLoader = require("./loadTrip");
+const firebase = require("./firebase");
 let places = [];
 
 //shows secton when you click on the navbar
@@ -37,13 +37,13 @@ function activateAddToTripButtons (){
 // right now save and publish do the same thing, but eventually save would save it locally and publish would stick it on the map
 function activateSaveTripButton(){
     $("#save-trip-button").click(function () {
-        tripBuilder.saveTrip(places);
+        firebase.createNewTrip(places);
     });
 }
 
 function activatePublishButton(){
     $("#publish-trip-button").click(function () {
-        tripBuilder.saveTrip(places);
+        firebase.createNewTrip(places);
     });
 }
 
@@ -52,7 +52,8 @@ function activateViewTripButton(){
     $("#view-trip").click(function () {
         $(".hidden").hide();
         $("#single-trip-section").show();
-        singleTrip.loadTrip("-L2jQtIMgyhGUVRoAjc7"); // this accepts an arguement of trip name
+        // git trip id from event.target and pass it into load trip
+        singleTripLoader.loadTrip("-L2jQtIMgyhGUVRoAjc7"); // this accepts an arguement of trip ID
     });
 }
 
@@ -60,13 +61,14 @@ function activateViewTripButton(){
 //  removes from Dom-- tripBuilderView.js
 //  removes from array-- tripBuilder.js
 
-// PAGE LOAD EVENTS
+// PAGE LOAD EVENTS //
 
 // loads the search map and geolocates to user's location
 function makeSearchMap () {
      placesSearch.geoLocate();
  }
 
+ // sets what the user sees when the page loads
  function showHomePage(){
      $(".hidden").hide();
      $(".browse-section").show(); 
@@ -76,6 +78,7 @@ function makeSearchMap () {
 module.exports.activateEvents = function () {
     activateNavBar();
     activateSearchButton();
+    activateViewTripButton();
     activateAddToTripButtons();
     activateSaveTripButton();
     activatePublishButton(); 
