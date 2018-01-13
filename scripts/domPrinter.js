@@ -23,6 +23,7 @@ module.exports.printTripBuilder = function (resultsDiv) {
     locationCard.appendTo(tripContainer);
 };
 
+// oh my god this has got to be handlebars
 module.exports.printAllTrips = function(allTrips){
     let container = $("#view-all-trips-container");
     container.html('');
@@ -37,4 +38,9 @@ module.exports.printAllTrips = function(allTrips){
         tripCard.append(cardBody);
         container.append(tripCard);
     }
+};
+
+module.exports.viewSingleTrip = function(singleTrip){
+    const viewTrip = require("../templates/view-single-trip.hbs");
+    $("#view-single-trip").html(viewTrip({ trip: singleTrip }));
 };
