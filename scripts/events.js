@@ -78,6 +78,7 @@ function makeSearchMap () {
  function loadAllTrips(){
      firebase.getAllTrips()
         .then(allTrips => {
+            tripFormatter.addTripID(allTrips);
              domPrinter.printAllTrips(allTrips);
          })
          .catch(err => {
