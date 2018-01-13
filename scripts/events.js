@@ -4,6 +4,7 @@ const placesSearch = require("./placesSearch");
 const domPrinter = require("./domPrinter");
 const singleTripLoader = require("./loadTrip");
 const firebase = require("./firebase");
+const tripFormatter = require("./tripFormatter");
 let places = [];
 
 //shows secton when you click on the navbar
@@ -37,7 +38,8 @@ function activateAddToTripButtons (){
 // right now save and publish do the same thing, but eventually save would save it locally and publish would stick it on the map
 function activateSaveTripButton(){
     $("#save-trip-button").click(function () {
-        firebase.createNewTrip(places);
+        let trip = tripFormatter.formatTrip();
+        firebase.createNewTrip(trip);
     });
 }
 
