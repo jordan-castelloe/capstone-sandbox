@@ -45,7 +45,8 @@ function activateSaveTripButton(){
 
 function activatePublishButton(){
     $("#publish-trip-button").click(function () {
-        firebase.createNewTrip(places);
+        let trip = tripFormatter.formatTrip();
+        firebase.createNewTrip(trip);
     });
 }
 

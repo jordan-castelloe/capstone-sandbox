@@ -3,14 +3,10 @@
 // takes input from dom, outputs an object to send to firebase
 // fired on save or publish
 module.exports.formatTrip = function(){
-    let tripName = $('#trip-name').val();
-    let tripDescription = $('#trip-description').val();
-    let tripType = $('#trip-type').val();
-    let trip = {
-        name: tripName,
-        description: tripDescription,
-        type: tripType,
-        user: "Current user"
-    };
+    let name = $('#trip-name').val();
+    let description = $('#trip-description').val();
+    let type = $('#trip-type').val();
+    let currentUser = "Current user";
+    let trip = {name, description, type, currentUser};
     return trip;
 };
