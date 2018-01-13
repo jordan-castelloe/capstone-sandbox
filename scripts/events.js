@@ -30,7 +30,7 @@ function activateAddToTripButtons (){
     $("#search-results-container").click(function () {
         if (event.target.id == "addToTrip") {
             places.push(event.target.parentNode.id);
-            domPrinter.printTrip(event.target.parentNode); // moves the place (parentNodeof the button) over to 'your trip' div on the right
+            domPrinter.printTripBuilder(event.target.parentNode); // moves the place (parentNodeof the button) over to 'your trip' div on the right
         }
     });
 }
@@ -38,15 +38,13 @@ function activateAddToTripButtons (){
 // right now save and publish do the same thing, but eventually save would save it locally and publish would stick it on the map
 function activateSaveTripButton(){
     $("#save-trip-button").click(function () {
-        let trip = tripFormatter.formatTrip();
-        firebase.createNewTrip(trip);
+       createNewTrip();
     });
 }
 
 function activatePublishButton(){
     $("#publish-trip-button").click(function () {
-        let trip = tripFormatter.formatTrip();
-        firebase.createNewTrip(trip);
+        createNewTrip();
     });
 }
 
@@ -77,6 +75,27 @@ function makeSearchMap () {
      $(".browse-section").show(); 
  }
 
+ function loadAllTrips(){
+     firebase.getAllTrips()
+        .then(allTrips => {
+             domPrinter.printAllTrips(allTrips);
+         })
+         .catch(err => {
+             console.log("oops", err);
+         });    
+ }
+
+ function createNewTrip(){
+     let trip = tripFormatter.formatTrip();
+     firebase.createNewTrip(trip)
+         .then(trip => {
+             loadAllTrips();
+         })
+         .catch(err => {
+             console.log("oops", err);
+         });  
+ }
+
 
 module.exports.activateEvents = function () {
     activateNavBar();
@@ -91,4 +110,5 @@ module.exports.activateEvents = function () {
 module.exports.initializePage = function(){
     showHomePage();
     makeSearchMap();
+    loadAllTrips();
 };

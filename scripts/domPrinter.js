@@ -14,11 +14,27 @@ module.exports.printSearchResults = function (resultsArray) {
     }
 };
 
-module.exports.printTrip = function (resultsDiv) {
+module.exports.printTripBuilder = function (resultsDiv) {
     let tripContainer = $(".my-trip");
     let locationCard = $(resultsDiv).clone();
     locationCard.addClass("location-card");
     let removeButton = $("<button>", { class: "btn btn-secondary", id: "removeFromTrip" }).text("Remove From Trip");
     $(".location-card > #addToTrip").replaceWith(removeButton); // why does this only work on the second click??
     locationCard.appendTo(tripContainer);
+};
+
+module.exports.printAllTrips = function(allTrips){
+    let container = $("#view-all-trips-container");
+    container.html('');
+    for (let trip in allTrips) {
+        let tripCard = $("<article>", { class: "trip card", id: allTrips[trip].name }); // eventually I want the id to be a trip id
+        let cardBody = $("<div>", { class: "card-body" });
+        let tripName = $("<h3>", { class: "trip-name card-title" }).text(allTrips[trip].name);
+        let tripAuthor = $("<h5>", { class: "trip-autor" }).text(allTrips[trip].currentUser);
+        let tripDescription = $("<p>", { class: "trip-description card-text" }).text(allTrips[trip].description);
+        let viewTripButton = $("<button>", { class: "btn btn-secondary view-trip", id: allTrips[trip].name }).text("View Trip");
+        cardBody.append(tripName).append(tripAuthor).append(tripDescription).append(viewTripButton);
+        tripCard.append(cardBody);
+        container.append(tripCard);
+    }
 };
