@@ -1,6 +1,4 @@
 'use strict';
-
-const localStorageHandler = require("./localStorage.js");
 let map = "";
 
 const infowindow = new google.maps.InfoWindow();
