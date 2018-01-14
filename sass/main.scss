@@ -7,13 +7,45 @@
     background-color: rgb(224, 224, 224);
 }
 
+.trip-card{
+    width: 20vw;
+    height: 45vh;
+    padding: 0;
+    margin: 0.5em;
+    border-radius: 0.1rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    position: relative;
+    .trip-author{
+       color: rgb(33, 33, 33);
+       font-size: 1.2rem;
+    }
+    .trip-description{
+        font-size: 0.9em;
+    }
+    .view-trip{
+        margin: 0;
+        width: 100%;
+        padding: 0.4em;
+        position: absolute;
+        bottom: 0; 
+        border-radius: 0;
+        height: 3em;
+    }
+}
+
+.trip-card:hover {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
 #search-button{
     display: inline;
+    margin: 1rem 0.5rem 2rem 0.5rem;
 }
 
 #searchable-map{
-    width: 70%;
+    width: 90%;
     height: 15em;
+    margin: 0;
 }
 
 #single-trip-map-container{
@@ -21,11 +53,44 @@
     height: 25em;
 }
 
-#my-trip{
-    width: 16em;
-    height: 100%;
-    padding: 1em;
-    overflow: scroll;
-    border: 1px solid gray;
+
+.search-container{
+    width: 40vw;
+    margin: 1em;
+}
+
+.trip-container{
+    // z-index: -1;
+    width: 30vw;
+    margin: 1em;
+    background: #aedae7;
+    height: 215vh;
+    #my-trip{
+        height: 130vh;
+        width: 29vw;
+        padding: 1em;
+        overflow: scroll;
+        border: 1px solid gray;
+        background-color: white;
+    }
+    button{
+        margin: 1em;
+        padding: 0.5em;
+    }
+}
+
+.search-result{
+    width: 29vw;
+    height: 9rem;
+    z-index: 100;
+    padding: 0.6rem;
+    background-color: rgb(197, 197, 197);
+    margin: 1em;
+    h4{
+        font-size: 1rem;
+    }
+    p{
+        font-size: 0.8rem;
+    }
 }
 
