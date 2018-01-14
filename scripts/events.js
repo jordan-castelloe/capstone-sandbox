@@ -26,15 +26,27 @@ function activateSearchButton(){
     });
 }
 
-// adds each place to trip when you click on it from the search results
-function activateAddToTripButtons (){
-    $(document).on("click", ".addToTrip", function (){
-        console.log("you want to add this to your trip!");
-        console.log(event.target.parentNode.id);
-        locations.push(event.target.parentNode.id);
-        domPrinter.printTripBuilder(event.target.parentNode); // moves the place (parentNodeof the button) over to 'your trip' div on the right
+// this needs to get called AFTER the search results print 
+// right now it gets called in placesSearch because it's set up in a callback
+module.exports.makeSearchResultsDraggable = function(){
+    $(".search-result").draggable({
+        containment: '#create-section',
+        cursor: 'move',
+        snap: '#my-trip'
     });
+    $("#my-trip").droppable({
+        drop: addToTrip
+    });
+};
+
+// called when location card is dropped in the my-trip div
+// pushes place ID into internal locations array
+// when the user clicks save, it will add that locations array onto their trip object
+function addToTrip(event, ui){
+    let locationCard = ui.draggable;
+    locations.push(locationCard.attr('id'));
 }
+
 
 // right now save and publish do the same thing, but eventually save would save it locally and publish would stick it on the map
 function activateSaveTripButton(){
@@ -53,10 +65,6 @@ function activatePublishButton(){
 function activateViewTripButton(){
     $(document).on("click", ".view-trip", function (){
         let tripId = $(this).attr("id");
-
-
-
-        
         let trip = firebase.getSingleTrip(tripId)
         .then(trip => {
             domPrinter.viewSingleTrip(trip);
@@ -113,7 +121,6 @@ module.exports.activateEvents = function () {
     activateNavBar();
     activateSearchButton();
     activateViewTripButton();
-    activateAddToTripButtons();
     activateSaveTripButton();
     activatePublishButton(); 
 };
