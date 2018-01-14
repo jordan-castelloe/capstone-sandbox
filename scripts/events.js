@@ -52,10 +52,11 @@ function activatePublishButton(){
 // when you click on the view trip button on each trip card under 'view all trips', it hides the view all trips scene and shows the individual trip
 function activateViewTripButton(){
     $(document).on("click", ".view-trip", function (){
-        console.log("You want to view a trip!");
-        // $(".hidden").hide();
         let tripId = $(this).attr("id");
-        console.log("this should be the trip id");
+
+
+
+        
         let trip = firebase.getSingleTrip(tripId)
         .then(trip => {
             domPrinter.viewSingleTrip(trip);
