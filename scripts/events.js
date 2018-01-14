@@ -28,11 +28,11 @@ function activateSearchButton(){
 
 // adds each place to trip when you click on it from the search results
 function activateAddToTripButtons (){
-    $("#search-results-container").click(function () {
-        if (event.target.id == "addToTrip") {
-            locations.push(event.target.parentNode.id);
-            domPrinter.printTripBuilder(event.target.parentNode); // moves the place (parentNodeof the button) over to 'your trip' div on the right
-        }
+    $(document).on("click", ".addToTrip", function (){
+        console.log("you want to add this to your trip!");
+        console.log(event.target.parentNode.id);
+        locations.push(event.target.parentNode.id);
+        domPrinter.printTripBuilder(event.target.parentNode); // moves the place (parentNodeof the button) over to 'your trip' div on the right
     });
 }
 
@@ -52,8 +52,11 @@ function activatePublishButton(){
 // when you click on the view trip button on each trip card under 'view all trips', it hides the view all trips scene and shows the individual trip
 function activateViewTripButton(){
     $(document).on("click", ".view-trip", function (){
-        $(".hidden").hide();
         let tripId = $(this).attr("id");
+
+
+
+        
         let trip = firebase.getSingleTrip(tripId)
         .then(trip => {
             domPrinter.viewSingleTrip(trip);

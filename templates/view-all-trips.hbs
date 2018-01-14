@@ -1,0 +1,19 @@
+<section class="browse-section" id="browse-section">
+    <h2>Browse Trips</h2>
+    <div class="browse-container container">
+        <div class="row">
+        <div class="col-md" id="view-all-trips-container">
+            {{#each trips}}
+                <article class="trip card">
+                    <div class="card-body">
+                        <h3 class="trip-name card-title">{{this.name}}</h3>
+                        <h4 class="trip-author">{{this.currentUser}}</h4>
+                        <p class="trip-description card-text">{{this.description}}</p>
+                        <button class="btn btn-secondary view-trip" id = "{{this.id}}">View Trip</button> 
+                    </div> 
+                </article>
+            {{/each}}
+            </div>
+        </div>
+    </div>
+</section>
