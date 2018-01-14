@@ -26,14 +26,8 @@ function activateSearchButton(){
     });
 }
 
-// adds each place to trip when you click on it from the search results
-function activateAddToTripButtons (){
-    $(document).on("click", ".addToTrip", function (){
-       
-       // moves the place (parentNodeof the button) over to 'your trip' div on the right
-    });
-}
-
+// this needs to get called AFTER the search results print 
+// right now it gets called in placesSearch because it's set up in a callback
 module.exports.makeSearchResultsDraggable = function(){
     $(".search-result").draggable({
         containment: '#create-section',
@@ -43,8 +37,6 @@ module.exports.makeSearchResultsDraggable = function(){
     $("#my-trip").droppable({
         drop: addToTrip
     });
-
-
 };
 
 // called when location card is dropped in the my-trip div
@@ -53,7 +45,6 @@ module.exports.makeSearchResultsDraggable = function(){
 function addToTrip(event, ui){
     let locationCard = ui.draggable;
     locations.push(locationCard.attr('id'));
-    console.log("this should be locations array", locations);
 }
 
 
@@ -130,7 +121,6 @@ module.exports.activateEvents = function () {
     activateNavBar();
     activateSearchButton();
     activateViewTripButton();
-    activateAddToTripButtons();
     activateSaveTripButton();
     activatePublishButton(); 
 };
