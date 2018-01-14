@@ -29,8 +29,8 @@ function activateSearchButton(){
 // adds each place to trip when you click on it from the search results
 function activateAddToTripButtons (){
     $(document).on("click", ".addToTrip", function (){
-        locations.push(event.target.parentNode.id);
-        domPrinter.printTripBuilder(event.target.parentNode); // moves the place (parentNodeof the button) over to 'your trip' div on the right
+       
+       // moves the place (parentNodeof the button) over to 'your trip' div on the right
     });
 }
 
@@ -46,13 +46,15 @@ module.exports.makeSearchResultsDraggable = function(){
 
 
 };
+
+// called when location card is dropped in the my-trip div
+// pushes place ID into internal locations array
+// when the user clicks save, it will add that locations array onto their trip object
 function addToTrip(event, ui){
     let locationCard = ui.draggable;
-    console.log("this should be the location div", locationCard);
-    // console.log("this should be the locations id", locationCard.attr('id'));
-
+    locations.push(locationCard.attr('id'));
+    console.log("this should be locations array", locations);
 }
-
 
 
 // right now save and publish do the same thing, but eventually save would save it locally and publish would stick it on the map
