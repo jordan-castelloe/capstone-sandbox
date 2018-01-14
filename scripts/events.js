@@ -29,12 +29,12 @@ function activateSearchButton(){
 // adds each place to trip when you click on it from the search results
 function activateAddToTripButtons (){
     $(document).on("click", ".addToTrip", function (){
-        console.log("you want to add this to your trip!");
-        console.log(event.target.parentNode.id);
         locations.push(event.target.parentNode.id);
         domPrinter.printTripBuilder(event.target.parentNode); // moves the place (parentNodeof the button) over to 'your trip' div on the right
     });
 }
+
+
 
 // right now save and publish do the same thing, but eventually save would save it locally and publish would stick it on the map
 function activateSaveTripButton(){
@@ -53,10 +53,6 @@ function activatePublishButton(){
 function activateViewTripButton(){
     $(document).on("click", ".view-trip", function (){
         let tripId = $(this).attr("id");
-
-
-
-        
         let trip = firebase.getSingleTrip(tripId)
         .then(trip => {
             domPrinter.viewSingleTrip(trip);

@@ -49,6 +49,8 @@ module.exports.searchPlaces = function(searchString) {
 // this has to be here right now (rather than in events) because I'm not sure how to convert google maps calls to promises
 function callback(searchResults, status) {
     domPrinter.printSearchResults(searchResults);
+    $(".search-result").draggable();
+
 }
 
 
