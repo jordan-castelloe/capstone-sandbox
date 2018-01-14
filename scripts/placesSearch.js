@@ -1,5 +1,6 @@
 'use strict';
 const domPrinter = require("./domPrinter");
+const events = require("./events");
 let map = "";
 
 //fid the user's location
@@ -42,15 +43,14 @@ module.exports.searchPlaces = function(searchString) {
         radius: 5000
     };
     let placesService = new google.maps.places.PlacesService(map);
-    placesService.textSearch(searchRequest, callback);
+    placesService.textSearch(searchRequest, printSearchResults);
 };
 
 //once the search request completes, print the search results
 // this has to be here right now (rather than in events) because I'm not sure how to convert google maps calls to promises
-function callback(searchResults, status) {
+function printSearchResults(searchResults, status) {
     domPrinter.printSearchResults(searchResults);
-    $(".search-result").draggable();
-
+    events.makeSearchResultsDraggable();
 }
 
 

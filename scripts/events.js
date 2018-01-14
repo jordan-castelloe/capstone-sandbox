@@ -34,6 +34,25 @@ function activateAddToTripButtons (){
     });
 }
 
+module.exports.makeSearchResultsDraggable = function(){
+    $(".search-result").draggable({
+        containment: '#create-section',
+        cursor: 'move',
+        snap: '#my-trip'
+    });
+    $("#my-trip").droppable({
+        drop: addToTrip
+    });
+
+
+};
+function addToTrip(event, ui){
+    let locationCard = ui.draggable;
+    console.log("this should be the location div", locationCard);
+    // console.log("this should be the locations id", locationCard.attr('id'));
+
+}
+
 
 
 // right now save and publish do the same thing, but eventually save would save it locally and publish would stick it on the map

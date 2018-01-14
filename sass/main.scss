@@ -21,9 +21,11 @@
     height: 25em;
 }
 
-#draggable{
-    height: 10em;
-    width: 10em;
-    background-color: red;
-
+#my-trip{
+    width: 16em;
+    height: 100%;
+    padding: 1em;
+    overflow: scroll;
+    border: 1px solid gray;
 }
+
