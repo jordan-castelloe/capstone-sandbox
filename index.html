@@ -43,10 +43,13 @@
             <div class="row">
 
                 <div class="col-md search-container">
-                    <h5>Search for places and add them to your trip</h5>
-                    <textarea class = "search-bar"></textarea>
-                    <button class="btn btn-secondary" id="search-button">Search</button>
-                    <div id = "searchable-map"></div>
+                    <div id = "search-bar-container">
+                        <div id = "searchable-map"></div>
+                        <h5>Search for places and add them to your trip</h5>
+                        <textarea class = "search-bar"></textarea>
+                        <button class="btn btn-secondary" id="search-button">Search</button>
+                    </div>
+
                     <div class = "search-results-container" id = "search-results-container">
                     </div><!-- search results div -->
                 </div> <!-- column div -->
@@ -69,7 +72,9 @@
                         </select>
                     </form>
 
-                    <div id = "my-trip"></div>
+                    <div id = "my-trip">
+                        <p id = "trip-builder-directions">Drag places here to add them to your trip.</p>
+                    </div>
                         
                     <button class="btn btn-secondary" id = "save-trip-button">Save</button>
                     <button class="btn btn-secondary" id = "publish-trip-button">Publish</button>
