@@ -28,7 +28,9 @@ function activateSearchButton(){
 
 // adds each place to trip when you click on it from the search results
 function activateAddToTripButtons (){
-    $("#search-results-container").on("click", ".addToTrip", function (){
+    $(document).on("click", ".addToTrip", function (){
+        console.log("you want to add this to your trip!");
+        console.log(event.target.parentNode.id);
         locations.push(event.target.parentNode.id);
         domPrinter.printTripBuilder(event.target.parentNode); // moves the place (parentNodeof the button) over to 'your trip' div on the right
     });

@@ -1,11 +1,9 @@
 {{#each results}}
-<div class="card search-result" id="{{this.place_id}}">
-    <article class="results card">
-        <div class="card-body">
-            <h3 class="result-name card-title">{{this.name}}</h3>
-            <h4 class="result-address">{{this.formatted_address}}</h4>
-            <button class="btn btn-secondary" class="addToTrip">Add To Trip</button>
-        </div>
-    </article>
-</div>
+<article class="search-result card" id="{{this.place_id}}">
+    <div class="card-body">
+        <h4 class="result-name card-title">{{this.name}}</h3>
+        <p class="result-address">{{this.formatted_address}}</p>
+        <button class="btn btn-secondary addToTrip">Add To Trip</button>
+    </div>
+</article>
 {{/each}}
