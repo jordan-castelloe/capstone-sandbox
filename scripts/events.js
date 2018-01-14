@@ -28,11 +28,9 @@ function activateSearchButton(){
 
 // adds each place to trip when you click on it from the search results
 function activateAddToTripButtons (){
-    $("#search-results-container").click(function () {
-        if (event.target.id == "addToTrip") {
-            locations.push(event.target.parentNode.id);
-            domPrinter.printTripBuilder(event.target.parentNode); // moves the place (parentNodeof the button) over to 'your trip' div on the right
-        }
+    $("#search-results-container").on("click", ".addToTrip", function (){
+        locations.push(event.target.parentNode.id);
+        domPrinter.printTripBuilder(event.target.parentNode); // moves the place (parentNodeof the button) over to 'your trip' div on the right
     });
 }
 
