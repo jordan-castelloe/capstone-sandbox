@@ -26,7 +26,10 @@ module.exports.printAllTrips = function(allTrips){
    
 };
 
+// pritns a single trip when you click on the view trip button
 module.exports.viewSingleTrip = function(singleTrip){
+    $(".hidden").hide();
+    $("#view-single-trip").show();
     const viewTrip = require("../templates/view-single-trip.hbs");
     $("#view-single-trip").html(viewTrip({ trip: singleTrip }));
 };
