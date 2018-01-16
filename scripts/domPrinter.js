@@ -19,7 +19,7 @@ module.exports.printTripBuilder = function (resultsDiv) {
 };
 
 module.exports.printAllTrips = function(allTrips){
-    const $container = $("#view-all-trips-container");
+    const $container = $("#browse-section");
     const viewAllTrips = require("../templates/view-all-trips.hbs");
     $container.html('');
     $container.html(viewAllTrips({ trips: allTrips }));
@@ -33,3 +33,4 @@ module.exports.viewSingleTrip = function(singleTrip){
     const viewTrip = require("../templates/view-single-trip.hbs");
     $("#view-single-trip").html(viewTrip({ trip: singleTrip }));
 };
+

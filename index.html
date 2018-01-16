@@ -22,66 +22,27 @@
             <li class="nav-item">
                 <a class="nav-link" id = "create" href="#create">Create a Trip</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" id = "my-trips" href="#create">My Trips</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id = "starred-trips" href="#create">Starred Trips</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id = "login" href="#">Logout</a>
+            </li>
         </ul>
     </nav>
 
-    <section class="browse-section hidden" id="browse-section">
-        <h2>Browse Trips</h2>
-        <div class = "browse-container container">
-            <div class="row">
-                <div class="col-md" id = "view-all-trips-container">
-                </div><!-- bootstrap col-md div -->
-            </div> <!-- bootstrap row div -->   
-        </div> <!-- bootstrap container div -->
-    </section> <!-- browse trip section -->
+    <section class="browse-section hidden" id="browse-section"></section> 
+    <div class = "subview browse" id = "view-single-trip"></div>
 
-    <div id = "view-single-trip"></div>
+    <section class = "create-section hidden" id = "create-section"></section>
 
-    <section class = "create-section hidden" id = "create-section">
-        <h2>Create A Trip</h2>
-        <div class = "container">
-            <div class="row">
-
-                <div class="col-md search-container">
-                    <div id = "search-bar-container">
-                        <div id = "searchable-map"></div>
-                        <h5>Search for places and add them to your trip</h5>
-                        <textarea class = "search-bar"></textarea>
-                        <button class="btn btn-secondary" id="search-button">Search</button>
-                    </div>
-
-                    <div class = "search-results-container" id = "search-results-container">
-                    </div><!-- search results div -->
-                </div> <!-- column div -->
-
-                <div class = "col-md trip-container">
-                    <h2>Your Trip</h2>
-                    <form class = "options">
-                        <div class="form-group">
-                            <label for="trip-name">Name</label>
-                            <input type="text" class="form-control" id="trip-name" placeholder="Best Hikes in Nashville">
-                        </div>
-                        <div class="form-group">
-                            <label for="trip-description">Description</label>
-                            <input type="text" class="form-control" id="trip-description" placeholder="Awesome hikes less than 2 hours away">
-                        </div>
-                        <p>This trip is a:</p>
-                        <select class = "form-group" id = "trip-type">
-                            <option value = "itenerary">Itenerary</option>
-                            <option value = "collection">Collection</option>
-                        </select>
-                    </form>
-
-                    <div id = "my-trip">
-                        <p id = "trip-builder-directions">Drag places here to add them to your trip.</p>
-                    </div>
-                        
-                    <button class="btn btn-secondary" id = "save-trip-button">Save</button>
-                    <button class="btn btn-secondary" id = "publish-trip-button">Publish</button>
-                </div> <!-- col-md search container div -->
-            </div><!-- bootstrap row div -->
-        </div><!-- bootstrap container div -->
-    </section><!-- create trip section -->
+    <section class = "my-trips-section" id = "my-trips-section"></div>
+    <div class = "subview my-trips" id = "edit-trip"></div>
+    
+    <section class = "starred-trips" id = "starred-trips-section"></div>
     
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
