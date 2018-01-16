@@ -87,7 +87,7 @@ function makeSearchMap () {
      placesSearch.geoLocate();
  }
 
- function loadTripBuilder (){
+ function loadTemplates (){
      domPrinter.printTripBuilder();
  }
 
@@ -131,7 +131,7 @@ module.exports.activateEvents = function () {
 
 // sets what the viewer sees when the page first loads
 module.exports.initializePage = function(){
-    loadTripBuilder();
+    loadTemplates();
     showHomePage();
     makeSearchMap();
     loadAllTrips();
