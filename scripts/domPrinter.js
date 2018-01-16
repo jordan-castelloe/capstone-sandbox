@@ -8,15 +8,15 @@ module.exports.printSearchResults = function (results) {
     $resultsContainer.html(viewSearchResults({ results }));
 };
 
-// moves location from 
-module.exports.printTripBuilder = function (resultsDiv) {
-    let tripContainer = $(".my-trip");
-    let locationCard = $(resultsDiv).clone();
-    locationCard.addClass("location-card");
-    let removeButton = $("<button>", { class: "btn btn-secondary", id: "removeFromTrip" }).text("Remove From Trip");
-    locationCard.appendTo(tripContainer);
-    $(".location-card > .addToTrip").replaceWith(removeButton); // why does this only work on the second click?? oh because it's only targeting ones with the class of location card
-};
+// // moves location from 
+// module.exports.printTripBuilder = function (resultsDiv) {
+//     let tripContainer = $(".my-trip");
+//     let locationCard = $(resultsDiv).clone();
+//     locationCard.addClass("location-card");
+//     let removeButton = $("<button>", { class: "btn btn-secondary", id: "removeFromTrip" }).text("Remove From Trip");
+//     locationCard.appendTo(tripContainer);
+//     $(".location-card > .addToTrip").replaceWith(removeButton); // why does this only work on the second click?? oh because it's only targeting ones with the class of location card
+// };
 
 module.exports.printAllTrips = function(allTrips){
     const $container = $("#browse-section");
@@ -34,3 +34,7 @@ module.exports.viewSingleTrip = function(singleTrip){
     $("#view-single-trip").html(viewTrip({ trip: singleTrip }));
 };
 
+module.exports.printTripBuilder = function(){
+    const viewTripBuilder = require("../templates/trip-builder.hbs");
+    $("#create-section").html(viewTripBuilder());
+};
